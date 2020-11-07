@@ -1,48 +1,76 @@
 <!DOCTYPE html>
 <html>
-	  <head>
-		      <meta charset <meta name="viewport" content="width=device-width">
-		          <Data Visualization Example</nk href="style.css" rel="stylesheet" type="text/css" />
-				      <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"></script>
-				        </head>
-					  <body>
-						      <h1 class="title">Data Visualization Example</h1>
-						          <section class="section">
-								        <h2 class="title">Introduction</h2>
-									      <p class="content">Education has always been an interesting subject to me. I've spent about 60% of my life in school, so my time in school has likely shaped a big part of who I am today. Having gone to school in California for my entire life (K-12, College), I was pleasantly surprised at how different my education was from folks in different states.</p>
-									            <p class="content">So that got me reflecting on my own background. How does my schooling compare to that of other schools in the state? How has my school changed in the past 10 years? What are some areas in which my school doeand what are some aspects in which it could improve? In this exercise, we'll answer some of those questions, wrning about various data sources and practicing our Chart.js/data visualization skills.</p>
-										          <p class="content">Feel free to use some of this as a template for your upcoming final project!</p>
-											      </section>
-											        
-											          <!-- Chart 1 -->
-												      <section class="section">
-													            <h2 class="title">Enrollment</h1>
-														          <p class="content">Here is a look at student enrollments year-over-year. It is slightly interesting that it is in constant decline.</p>
-															        <canvas id="enrollment-yoy-chart" width="200" height="100"></canvas>
-																      <p class="content">While my observations can't tell the full story, I do notice that in my neighborhood, there are no kids anymore. Only the parents are living there, while the kids have moved onto college or moved to a different city.</p>
-																          </section>
+	<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Data Visualization Example | A Look at my High School!</title>
+		<!-- Including ChartJS -->
+		<script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"></script>
+		<!-- Including Bootstrap -->
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+		<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+		<!-- Including our own styles and script -->
+		<link href="styles.css" rel="stylesheet" type="text/css" />
+		<script src="script.js" defer></script>
+	</head>
+	<body class="container-fluid p4">
+		<h1 class="title">A Look at my High School</h1>
+    <section class="card mb-3">
+			<div class="card-body">
+				<h2 class="card-title">Introduction</h2>
+				<p>Education has always been an interesting subject to me. I've spent about 60% of my life in school, so my time in school has likely shaped a big part of who I am today. Having gone to school in California for my entire life (K-12, College), I was pleasantly surprised at how different my education was from folks in different states.</p>
+				<p>So that got me reflecting on my own background. How does my schooling compare to that of other schools in the state? How has my school changed in the past 10 years? What are some areas in which my school does well, and what are some aspects in which it could improve? In this exercise, we'll answer some of those questions, while learning about various data sources and practicing our Chart.js/data visualization skills.</p>
+				<p>Feel free to use some of this as a template for your upcoming final project!</p>
+			</div>
+		</section>
 
-																	      <section class="section">
-																		            <h2 class="title">Ethnicity Breakdown</h2>
-																			          <canvas id="ethnicity-yoy-chart" width="200" height="150"></canvas>
-																				        <p class="content">My highschool is mostly Asian. The diversity of my highschool looks to be quite similar year-over-year. </p>
-																					      <!-- Exercise 1 -->
-																					            <p class="content"> Something that I was always curious about was how diverse the teachers were and whether they somewhat resembled the diversity of students.</p>
-																						          <canvas id="teacher-ethnicity-yoy-chart" width="200" height="150"></canvas>
-																							      </section>
+		<section class="card mb-3">
+			<div class="card-body">
+				<h2 class="card-title">Arcadia High School</h2>
+				<p>Arcadia High School was an interesting place, something I didn't really realize until I went to college.</p>
+				<p>Here are some particular reasons why:
+					<ol>
+						<li>It's a giant school. My graduating class was 936 or so students. Some of my college friends' entire high schools are not that big.</li>
+						<li>It's majority Asian. Over 50% of the school identified as Asian.</li>
+						<li>It had a well-known band and some notable athletes, even though we known for athletics by any measure.</li>
+					</ol>
+				</p>
+			</div>
+    </section>
 
-																							          <section class="section">
-																									        <h2 class="titlerses</h2>
-																										      <p class="content">Let's take a look at the courses offered at the school and how that has changed from 2014-2015 school year to the 2018-2019 school year.</p>
-																										            <canvas id="subject-chart-1" width="200" height="150"></canvas>
-																											          <canvas id="subject-chart-2" width="200" height="150"></canvas>
-																												      </section>
-																												          <script src="gather-data.js"></script>
-																													      <script src="chart-1.js"></script>
-																													          <script src="chart-2.js"></script>
-																														      <script src="chart-3.js"></script>
-																														          <script src="exercise-1.js"></script>
-																															      <script src="exercise-2.js"></script>
-																															          <script src="exercise-3.js"></script>
-																																    </body>
+    <!-- Chart 1 -->
+    <section class="card mb-2">
+			<div class="card-body">
+				<h2 class="card-title">Enrollment</h1>
+					<p>Here is a look at student enrollments year-over-year. It is slightly interesting that it is in constant decline.</p>
+					<canvas id="enrollment-yoy-chart" width="200" height="100"></canvas>
+					<p class="alert alert-primary" role="alert">While my observations can't tell the full story, I do notice that in my neighborhood, there are no kids anymore. Only the parents are living there, while the kids have moved onto college or moved to a different city.</p>
+			</div>
+    </section>
+
+		<section class="card mb-2">
+			<div class="card-body">
+				<h2 class="card-title">Ethnicity Breakdown</h1>
+					<canvas id="ethnicity-yoy-chart" width="200" height="150"></canvas>
+					<p class="alert alert-primary" role="alert">Veriefd: my highschool is mostly Asian. The diversity of my highschool looks to be quite similar year-over-year.</p>
+			    <p> Something that I was always curious about was how diverse the teachers were and whether they somewhat resembled the diversity of students.</p>
+					<canvas id="teacher-ethnicity-yoy-chart" width="200" height="150"></canvas>
+					<p>To better visualize how representative the teachers are of the students, let's put them side by side.</p>
+					<canvas id="teacher-student-ethnicity-comparison-chart" width="200" height="150"></canvas>
+					<p class="alert alert-primary" role="alert">No surprise here. Huge discrepancy between mostly Asian student body and mostly White teachers. A slightly interesting observation is that the percentage of white teachers is slowly decreasing, while the percentage of asian students remains the same. This likely means the teaching staff is getting more and more diverse!</p>
+			</div>
+		</section>
+
+		<section class="card mb-2">
+			<div class="card-body">
+				<h2 class="card-title">Courses</h1>
+					<p>Let's take a look at the courses offered at the school and how that has changed from 2014-2015 school year to the 2018-2019 school year.</p>
+					<div>
+						<canvas id="subject-chart-1" width="400" height="150"></canvas>
+						<canvas id="subject-chart-2" width="400" height="150"></canvas>
+					</div>
+			</div>
+    </section>
+	</body>
 </html>
