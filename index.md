@@ -43,6 +43,9 @@ In `index.html`
 
 [Chart JS Samples](https://www.chartjs.org/samples/latest/) - Some samples of more advanced usage of ChartJs, such as tooltips, positioning, etc.). Use the Dev Tools Inspector to see the code.
 
+## Bootstrap
+[Bootstrap Website](https://getbootstrap.com/docs/4.5/getting-started/introduction/) - Using Bootstrap, we don't have to worry too much about CSS. Bootstrap is a design/component library, which comes with default styling and  components you can use to make webpages and user interfaces.
+
 ## Data Sources
 
 Education Datasets

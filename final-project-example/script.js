@@ -43,11 +43,13 @@ const enrollmentYoyChartContext = document.querySelector('#enrollment-yoy-chart'
 // This is what creates the chart!
 const enrollmentYoyChart = new Chart(enrollmentYoyChartContext, {
     // Notice this chart type!
-    type: 'bar',
+    type: 'line',
     // The data for our dataset
     data: {
       labels: enrollmentYears,
       datasets: [{
+          fill: false,
+          pointRadius: 10,
           label: 'Enrollment at Arcadia High School Year-over-Year',
           // you can use this to find cool colors (use the HEX (#CA3B11) or rgb (rgb(202, 59, 17) values): https://htmlcolorcodes.com/
           backgroundColor: 'rgb(202, 59, 17)',
@@ -179,15 +181,12 @@ const teacherStudentComparisonChart = new Chart(teacherStudentComparisonChartCon
   },
   options: {
     scales: {
-      xAxes: [{ stacked: true }],
-      yAxes: [{ stacked: true }],
-      scaleLabel: {
-        labelString: "swag"
-      }
+      xAxes: [{ stacked: true, scaleLabel: { display: true, labelString: 'Year' } }],
+      yAxes: [{ stacked: true, scaleLabel: { display: true, labelString: 'Percentage' } }],
     },
     title: {
       display: true,
-      text: 'Comparison of Teacher v. Student Ethnicities Year over Year'
+      text: 'Comparison of Teacher v. Student Ethnicities Year over Year (%)'
     },
   }
 });
@@ -217,63 +216,110 @@ const subjectDataByYear = [
 
 const subjectChart1Context = document.querySelector('#subject-chart-1').getContext('2d');
 
+const data2014 = subjectDataByYear[0];
+const data2018 = subjectDataByYear[subjectDataByYear.length - 1];
+const total2014 = data2014.reduce((acc, curr) => acc + curr);
+const total2018 = data2018.reduce((acc, curr) => acc + curr);
 const subjectChart1 = new Chart(subjectChart1Context, {
-    type: 'doughnut',
+    type: 'line',
     data: {
       labels: subjects,
-      datasets: [{
-        label: 'Number of Classes',
-        backgroundColor: [
-          '#DAF7A6',
-          '#FFC300',
-          '#FF5733',
-          '#C70039',
-          '#900C3F',
-          '#DAF7A6',
-          '#FF5733',
-          '#2E86C1',
-          '#9B59B6',
-          '#CD6155',
-        ],
-        data: subjectDataByYear[0]
-      }],
+      datasets: [
+        {
+          label: '2014-2015',
+          data: data2014.map((d) => d / total2014 * 100),
+          borderColor: '#C70039',
+          backgroundColor: '#C70039',
+          fill: false,
+        },
+        {
+          label: '2018-2019',
+          data: data2018.map((d) => d / total2018 * 100),
+          borderColor: '#9B59B6',
+          backgroundColor: '#9B59B6',
+          fill: false,
+        }
+      ],
     },
     options: {
+      scales: {
+        yAxes: [{scaleLabel: { display: true, labelString: 'Percentage' }}],
+      },
       title: {
         display: true,
-        text: 'Number of Classes/Subject for Year 2014-2015'
+        text: 'Subject as Percentage of Classes for Year 2014-2015 v. 2018-2019'
       }
     }
 });
 
-// subject chart 2
-const subjectChart2Context = document.querySelector('#subject-chart-2').getContext('2d');
+// College going rate charts (2017-2018)
+const collegeGoingColumns = [
+  'Race/Ethnicity',
+  'High School Completers',
+  'High School Completers Enrolled In College',
+];
 
-const subjectChart2 = new Chart(subjectChart2Context, {
-    type: 'doughnut',
-    data: {
-      labels: subjects,
-      datasets: [{
-        label: 'Number of Classes',
+const collegeGoingRate2017 = [
+  ['African American', 13, 12],
+  ['American Indian or Alaska Native', 0, 0],
+  ['Asian', 578, 505],
+  ['Filipino',  30, 24],
+  ['Hispanic or Latino', 110, 82],
+  ['Pacific Islander', 0, 0],
+  ['White', 118, 104],
+  ['Two or More Races', 0, 0],
+];
+
+const avgCollegeGoingRateContext = document.querySelector('#avg-college-going').getContext('2d');
+
+const avgCollegeGoingRateChart = new Chart(avgCollegeGoingRateContext, {
+  type: 'doughnut',
+  data: {
+    labels: ['Do not go onto College', 'Go onto College'],
+    datasets: [
+      {
+        label: 'dataset-1',
+        data: [collegeGoingRate2017.map((c) => c[1] - c[2]).reduce((acc, curr) => acc + curr), collegeGoingRate2017.map((c) => c[2]).reduce((acc, curr) => acc + curr)],
         backgroundColor: [
-          '#DAF7A6',
           '#FFC300',
           '#FF5733',
-          '#C70039',
-          '#900C3F',
-          '#DAF7A6',
-          '#FF5733',
-          '#2E86C1',
-          '#9B59B6',
-          '#CD6155',
-        ],
-        data: subjectDataByYear[subjectDataByYear.length - 1]
-      }],
-    },
-    options: {
-      title: {
-        display: true,
-        text: 'Number of Classes/Subject for Year 2018-2019'
-      }
+        ]
+      },
+    ],
+  },
+  options: {
+    title: {
+      display: true,
+      text: 'College Going Rate'
     }
+  }
+});
+
+const collegeGoingRateEthnicityContext = document.querySelector('#ethnicity-college-going').getContext('2d');
+
+const collegeGoingRateEthnicityChart = new Chart(collegeGoingRateEthnicityContext, {
+  type: 'horizontalBar',
+  data: {
+    labels: collegeGoingRate2017.map((c) => c[0]),
+    datasets: [
+      {
+        label: 'dataset-1',
+        data: collegeGoingRate2017.map((c, idx) => c[2]/c[1] * 100),
+        backgroundColor: colorsPerEthnicity
+      },
+    ],
+  },
+  options: {
+    scales: {
+      xAxes: [{scaleLabel: { display: true, labelString: 'Percentage' }, ticks: { beginAtZero: true }}],
+
+    },
+    legend: {
+      display: false,
+    },
+    title: {
+      display: true,
+      text: 'College Going Rate Percentage By Ethnicity'
+    }
+  }
 });
