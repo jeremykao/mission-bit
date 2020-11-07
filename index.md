@@ -9,7 +9,7 @@ For the next couple of weeks, you're going to tell a story that you find interes
 Create a webpage that tells some story and use data visualization or interactivity to help tell that story.
 
 ## Example Project
-[Insert link to Example here](final-project-example/index.html)
+[A Look at my High School](final-project-example/index.html)
 
 ## Guidelines
 - You can be as creative as you want
